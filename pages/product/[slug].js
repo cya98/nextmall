@@ -6,12 +6,13 @@ import Layout from '../../components/Layout'
 import data from '../../utils/data'
 import { Store } from '../../utils/Store'
 
-export default function ProductScreen(props) {
-  const { product } = props
+export default function ProductScreen() {
   const { state, dispatch } = useContext(Store)
-  const router = useRouter()
+  const { query } = useRouter()
+  const { slug } = query
+  const product = data.products.find((x) => x.slug === slug)
   if (!product) {
-    return <Layout title="Produt Not Found">Produt Not Found</Layout>
+    return <div>Produt Not Found</div>
   }
 
   const addToCartHandler = async () => {
@@ -24,7 +25,6 @@ export default function ProductScreen(props) {
     }
 
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } })
-    router.push('/cart')
   }
 
   return (
