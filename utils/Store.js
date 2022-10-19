@@ -1,4 +1,4 @@
-import { Children, createContext, useReducer } from 'react'
+import { createContext, useReducer } from 'react'
 
 export const Store = createContext() // 스토어라는 객체를 만듬 createContext를 이용해서
 
