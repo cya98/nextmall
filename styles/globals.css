@@ -15,6 +15,14 @@ a {
   text-decoration: none;
 }
 
+.card {
+  @apply mb-5 block rounded-lg border border-gray-200 shadow-md;
+}
+
+.primary-button {
+  @apply rounded bg-slate-300 py-2 px-4 shadow outline-none hover:bg-slate-400 active:bg-slate-500 active:font-bold;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -24,7 +32,7 @@ a {
     color-scheme: dark;
   }
   body {
-    color: rgb(26, 164, 219);
-    background: black;
+    color: black;
+    background: white;
   }
 }
