@@ -15,6 +15,12 @@ a {
   text-decoration: none;
 }
 
+input,
+select,
+textarea {
+  @apply rounded, border, p-2, outline-none, ring-indigo-300, focus:ring, bg-slate-100;
+}
+
 .card {
   @apply mb-5 block rounded-lg border border-gray-200 shadow-md;
 }
