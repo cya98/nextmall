@@ -13,7 +13,7 @@ export default function Layout({ title, children }) {
 
       <div className="flex flex-col h-screen justify-between">
         <header>
-          <nav className="flex justify-between items-center h-12 px-4 shadow-md">
+          <nav className="flex justify-between items-center bg-slate-200 h-12 px-4 shadow-md">
             <Link href="/">
               <a className="text-lg font-bold">NextMall</a>
             </Link>
@@ -29,7 +29,7 @@ export default function Layout({ title, children }) {
         </header>
         <main className="container m-auto mt-4 px-4"> {children} </main>
 
-        <footer className="flex h-10 bg-red-100 justify-center items-center shadow-inner">
+        <footer className="flex h-10 bg-red-200 justify-center items-center shadow-inner">
           <p> Copyright &copy; 2022, NextMall</p>
         </footer>
       </div>
