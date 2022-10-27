@@ -10,7 +10,7 @@ export default function Layout({ title, children }) {
   const [cartItemsCount, setCartItemsCount] = useState(0) //변수이름, 변수를 변경하는 함수이름
   useEffect(() => {
     setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0))
-  }, [cart, cartItems])
+  }, [cart.cartItems])
   return (
     <div>
       <Head>
