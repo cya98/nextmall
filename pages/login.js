@@ -1,17 +1,42 @@
 import Link from 'next/link'
+import { signIn, useSession } from 'next-auth/react'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import Layout from '../components/Layout'
+import { getError } from '../utils/erorr'
+import { toast } from 'react-toastify'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 export default function LoginScreen() {
+  const { data: session } = useSession()
+  const router = useRouter()
+  const { redirect } = router.query // 지불 버튼 눌렀더니 로그인 했냐 로그인 성공하면 바로 카트페이지로 감
+  useEffect(() => {
+    if (session?.user) {
+      router.push(redirect || '/') //카트페이지로 가거나 루트페이지로가거나
+    }
+  }, [router, session, redirect]) //세션이 바뀌면
+
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm()
 
-  const submitHandler = ({ email, password }) => {
-    console.log(email, password)
+  const submitHandler = async ({ email, password }) => {
+    try {
+      const result = await signIn('credentials', {
+        redirect: false,
+        email,
+        password,
+      })
+      if (result.error) {
+        toast.error(result.error)
+      }
+    } catch (err) {
+      toast.error(getError(err))
+    }
   }
 
   return (
