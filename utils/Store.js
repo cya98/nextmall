@@ -6,7 +6,7 @@ export const Store = createContext() // 스토어라는 객체를 만듬 createC
 const initialState = {
   cart: Cookies.get('cart')
     ? JSON.parse(Cookies.get('cart'))
-    : { cartItems: [] },
+    : { cartItems: [], shippingAddress: {} }, //주소는 배열 x 오브젝트
 }
 
 function reducer(state, action) {
@@ -40,6 +40,18 @@ function reducer(state, action) {
           cartItems: [],
           shippingAddress: { location: {} },
           paymentMethod: '',
+        },
+      }
+
+    case 'SAVE_SHIPPING-ADDRESS':
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          shippingAddress: {
+            ...state.cart.shippingAddress,
+            ...action.payload,
+          },
         },
       }
     default:

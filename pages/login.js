@@ -48,26 +48,6 @@ export default function LoginScreen() {
         <h1 className="text-xl mb-4">Login</h1>
 
         <div className="mb-4">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            {...register('password', {
-              required: 'Please enter password',
-              minLength: {
-                value: 3,
-                message: '패스워드를 3자 이상으로 입력하세요.',
-              },
-            })}
-            className="w-full"
-            id="password"
-            autoFocus
-          ></input>
-          {errors.password && (
-            <div className="text-red-500">{errors.password.message}</div>
-          )}
-        </div>
-
-        <div className="mb-4">
           <button className="primary-button" type="submit">
             Login
           </button>
@@ -90,6 +70,26 @@ export default function LoginScreen() {
           />
           {errors.email && (
             <div className="text-red-500">{errors.email.message}</div>
+          )}
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            {...register('password', {
+              required: 'Please enter password',
+              minLength: {
+                value: 3,
+                message: '패스워드를 3자 이상으로 입력하세요.',
+              },
+            })}
+            className="w-full"
+            id="password"
+            autoFocus
+          ></input>
+          {errors.password && (
+            <div className="text-red-500">{errors.password.message}</div>
           )}
         </div>
 

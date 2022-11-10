@@ -25,7 +25,7 @@ export default function ProductItem({ product }) {
         <p className="mb-2">{product.brand}</p>
         <p>${product.price}</p>
         <button className="primary-button" type="button">
-          카트에 넣기{' '}
+          카트에 넣기
         </button>
       </div>
     </div>
