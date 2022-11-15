@@ -26,6 +26,10 @@ textarea {
 }
 
 .primary-button {
+  @apply rounded bg-yellow-300 py-2 px-4 shadow outline-none hover:bg-yellow-400 active:bg-yellow-500 active:font-bold;
+}
+
+.default-button {
   @apply rounded bg-slate-300 py-2 px-4 shadow outline-none hover:bg-slate-400 active:bg-slate-500 active:font-bold;
 }
 
