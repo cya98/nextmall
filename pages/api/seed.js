@@ -1,5 +1,6 @@
 //백엔드 페이지 백엔드 프론트 나녔는데 여기선 그냥 한 프로젝트 안에 백엔드 페이지가있어서 편리
 
+import Product from '../../models/Product'
 import User from '../../models/User'
 import data from '../../utils/data'
 import db from '../../utils/db'
@@ -12,6 +13,8 @@ const handler = async (req, res) => {
   await db.connect()
   await User.deleteMany() //기존의 유저 데이터를 다 지우는거
   await User.insertMany(data.users)
+  await Product.deleteMany()
+  await Product.insertMany(data.products)
   await db.disconnect()
   res.send({
     message: 'seeded successfully... 초기사용자가 성공적으로 등록되었습니다.',
