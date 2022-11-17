@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-export default function ProductItem({ product }) {
+export default function ProductItem({ product, addToCartHandler }) {
   //서버에서 부를때 여기에 이상품을 해주세요 객체정보를 줄거다 그래서 중괄호하고 product
   return (
     <div className="card">
@@ -24,7 +24,11 @@ export default function ProductItem({ product }) {
         </Link>
         <p className="mb-2">{product.brand}</p>
         <p>${product.price}</p>
-        <button className="primary-button" type="button">
+        <button
+          className="primary-button"
+          type="button"
+          onClick={() => addToCartHandler(product)}
+        >
           카트에 넣기
         </button>
       </div>

@@ -31,7 +31,14 @@ async function disconnect() {
     }
   }
 }
-const db = { connect, disconnect }
+
+function convertDocToObj(doc) {
+  doc._id = doc._id.toString()
+  doc.createdAt = doc.createdAt.toString()
+  doc.updatedAt = doc.updatedAt.toString()
+  return doc
+}
+const db = { connect, disconnect, convertDocToObj }
 export default db
 
 //이 전체 코드가 그냥 몽고연결하는거라 다른 프로젝트할때도 그대로 쓸 수 있음
