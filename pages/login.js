@@ -39,6 +39,42 @@ export default function LoginScreen() {
     }
   }
 
+  const githubLoginHandler = async () => {
+    try {
+      const result = await signIn('github', { redirect: false })
+      console.log('Github login:' + result)
+    } catch (err) {
+      toast.error(getError(err))
+    }
+  }
+
+  const googleLoginHandler = async () => {
+    try {
+      const result = await signIn('google', { redirect: false })
+      console.log('Github login:' + result)
+    } catch (err) {
+      toast.error(getError(err))
+    }
+  }
+
+  const kakaoLoginHandler = async () => {
+    try {
+      const result = await signIn('kakao', { redirect: false })
+      console.log('Kakao login:' + result)
+    } catch (err) {
+      toast.error(getError(err))
+    }
+  }
+
+  const naverLoginHandler = async () => {
+    try {
+      const result = await signIn('naver', { redirect: false })
+      console.log('Naver login:' + result)
+    } catch (err) {
+      toast.error(getError(err))
+    }
+  }
+
   return (
     <Layout title="Login">
       <form
@@ -48,13 +84,9 @@ export default function LoginScreen() {
         <h1 className="text-xl mb-4">Login</h1>
 
         <div className="mb-4">
-          <button className="primary-button" type="submit">
-            Login
-          </button>
-        </div>
-
-        <div className="mb-4">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email" className="bg-lime-100 b-4">
+            Email
+          </label>
           <input
             type="email"
             {...register('email', {
@@ -74,7 +106,9 @@ export default function LoginScreen() {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password" className=" bg-lime-100 mb-4">
+            Password
+          </label>
           <input
             type="password"
             {...register('password', {
@@ -93,8 +127,54 @@ export default function LoginScreen() {
           )}
         </div>
 
+        <div>
+          <button className="mb-4 primary-button" type="submit">
+            Login
+          </button>
+        </div>
+
         <div className="mb-4">
-          계정이 없으면 등록하세요...<Link href="register">Register</Link>
+          계정이 없으신가요..?<Link href="register"> Register</Link>
+        </div>
+
+        <div className="mb-4">
+          <button
+            className="primary-button w-full"
+            type="button"
+            onClick={githubLoginHandler}
+          >
+            Github Login
+          </button>
+        </div>
+
+        <div className="mb-4">
+          <button
+            className="primary-button w-full"
+            type="button"
+            onClick={googleLoginHandler}
+          >
+            Google Login
+          </button>
+        </div>
+
+        <div className="mb-4">
+          <button
+            className="primary-button w-full"
+            type="button"
+            onClick={kakaoLoginHandler}
+          >
+            Kakao Login
+          </button>
+        </div>
+
+        <div className="mb-4">
+          <button
+            className="primary-button w-full"
+            type="button"
+            onClick={naverLoginHandler}
+          >
+            Naver Login
+          </button>
         </div>
       </form>
     </Layout>

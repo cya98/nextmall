@@ -19,11 +19,12 @@ export default function Layout({ title, children }) {
     setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0))
   }, [cart.cartItems])
 
-  const logaoutClickHandler = () => {
+  const logoutClickHandler = () => {
     Cookies.remove('cart')
     dispatch({ type: 'CART_RESET' })
     signOut({ callbackUrl: '/login' })
   }
+
   return (
     <div>
       <Head>
@@ -74,7 +75,11 @@ export default function Layout({ title, children }) {
                       </DropdownLink>
                     </Menu.Item>
                     <Menu.Item>
-                      <a className="dropdown-link" href="#">
+                      <a
+                        className="dropdown-link"
+                        href="#"
+                        onClick={logoutClickHandler}
+                      >
                         Logout
                       </a>
                     </Menu.Item>
