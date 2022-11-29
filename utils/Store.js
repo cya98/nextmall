@@ -56,6 +56,9 @@ function reducer(state, action) {
       }
     default:
       return state
+
+    case 'CART_CLEAR_ITEMS':
+      return { ...state, cart: { ...state.cart, cartItems: [] } }
   }
 }
 
