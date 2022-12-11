@@ -16,11 +16,9 @@ export default function PaymentScreen() {
   const router = useRouter()
 
   const submitHandler = (e) => {
-    //e는 이벤트가 발생하면 딴데로감
-    e.preventDefault() //html 기본액션이 실행이안되도록
+    e.preventDefault()
     if (!selectedPaymentMethod) {
-      //선택되지 않았으면은
-      return toast.error('Payment method is required') //toast
+      return toast.error('Payment method is required')
     }
     dispatch({ type: 'SAVE_PAYMENT_METHOD', payload: selectedPaymentMethod })
     Cookies.set(
@@ -45,24 +43,22 @@ export default function PaymentScreen() {
       <CheckoutWizard activeStep={2} />
       <form className="mx-auto max-w-screen-md" onSubmit={submitHandler}>
         <h1 className="mb-4 text-xl">Payment Method</h1>
-        {['PayPal', 'Stripe', 'CashOnDelivery', 'KakaoPay', 'NaverPay'].map(
-          (payment) => (
-            <div key={payment} className="mb-4">
-              <input
-                name="paymentMethod"
-                className="p-2 outline-none focus:ring-0"
-                id={payment}
-                type="radio"
-                checked={selectedPaymentMethod === payment}
-                onChange={() => setSelectedPaymentMethod(payment)}
-              />
+        {['PayPal', 'Stripe', 'CashOnDelivery'].map((payment) => (
+          <div key={payment} className="mb-4">
+            <input
+              name="paymentMethod"
+              className="p-2 outline-none focus:ring-0"
+              id={payment}
+              type="radio"
+              checked={selectedPaymentMethod === payment}
+              onChange={() => setSelectedPaymentMethod(payment)}
+            />
 
-              <label className="p-2" htmlFor={payment}>
-                {payment}
-              </label>
-            </div>
-          )
-        )}
+            <label className="p-2" htmlFor={payment}>
+              {payment}
+            </label>
+          </div>
+        ))}
         <div className="mb-4 flex justify-between">
           <button
             onClick={() => router.push('/shipping')}
